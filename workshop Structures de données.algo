@@ -1,0 +1,190 @@
+
+  //problem1
+  FUNCTION remplir(n:INTEGER) : ARRAY_OF INTEGER
+  VAR
+    i :INTEGER
+  BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        read("remplir  ensemble de nombre ",t[i]);
+    END_FOR
+    RETURN t;
+  END
+
+
+ FUNCTION recherche(nb:INTEGER,tab: ARRAY_OF INTEGER ,n: INTEGER) :BOOLEAN
+ VAR
+    r: BOOLEAN;
+    j:interger;
+ BEGIN
+ r:=false;
+j:=0;
+    REPEAT
+    
+        IF nb=tab[j] THEN
+        r:= true;
+        END_IF
+        j:=j+1  
+    UNTIL ((r==true) and (j==n-1))
+       
+     
+    RETURN r ;
+ END
+
+    FUNCTION disc(t,t2: ARRAY_OF INTEGER,n:INTEGER) : ARRAY_OF INTEGER
+    VAR
+    i :interger;
+         r:BOOLEAN;
+      t3 : ARRAY_OF INTEGER[t3.length];
+    BEGIN
+            FOR i FROM 0 TO n-1 STEP 1 DO
+  r:=recherche(t[i],t2,n);
+   IF (r==false) THEN
+   t3[i]:=t[i];
+   END_IF
+  END_FOR
+        RETURN t3 ;
+    END
+
+
+    FUNCTION somme (t3,t4 :ARRAY_OF INTEGER) : INTEGER
+    VAR
+       i,s,s1,s2: interger;
+    BEGIN
+    s1:=0;
+    s2:=0;
+        FOR i FROM 0 TO t3.length-1 STEP 1  DO
+            s1:=s1+t3[i];
+        END_FOR
+        FOR i FROM 0 TO t4.length-1 STEP 1  DO
+            s2:=s1+t4[i];
+        END_FOR
+        s:=s1+s2;
+        RETURN s ;
+    END
+
+   
+ALGORITHM algorithm_name
+VAR
+   n,i:INTEGER;
+t,t2: ARRAY_OF INTEGER[n];
+BEGIN
+  read(n);
+ t:=remplir(t,n );    
+ t2:=remplir(t, n ); 
+ t3:=dis(t,t2,n);
+ t4:=dis(t2,t,n);
+ s:=somme(t3,t4); 
+ writh ("la somme de nombre et :",s );
+
+ FOR i FROM 01 TO t3.length-1 STEP 1  DO
+       write(" distinct elements est : " t3);
+    END_FOR
+    FOR i FROM 01 TO t4.length-1 STEP 1  DO
+       write(" distinct elements est : " t4);
+    END_FOR
+ 
+ 
+END
+
+
+
+
+
+
+
+//problem 2.1 par procedure 
+
+
+
+ FUNCTION remplir(n:INTEGER) : ARRAY_OF interger
+  VAR
+    i :INTEGER
+  BEGIN
+    FOR i FROM 1 TO n STEP 1  DO
+        read("ecrire le vecteur ",t[i]);
+    END_FOR
+    RETURN t;
+  END
+
+
+PROCEDURE produit(VAR ps:INTEGER  ,v1,v2:ARRAY_OF interger, n :INTEGER)
+VAR
+    i :INTEGER;
+BEGIN
+
+     FOR i FROM 0 TO n-1 STEP 1  DO
+       ps:=ps+(v1[i]*v2[i]);
+     END_FOR
+ 
+
+END
+
+
+ALGORITHM algorithm_name
+VAR
+   n,ps:INTEGER;
+v1,v2: ARRAY_OF INTEGER[n];
+ch:STRING;
+BEGIN
+ps:=0;
+ch:'';
+  read(n);
+ v1:=remplir(n );    
+ v2:=remplir(n); 
+ produit(ps,v1,v2,n);
+  IF (ps==0) THEN
+    ch:='orthogonaux';
+ ELSE
+    ch:=' ne pas orthogonaux';
+ END_IF
+ writh(" Le produit scalaire de deux vecteurs",ortho);
+
+END
+
+
+//problem 2.2 par function 
+
+
+ FUNCTION remplir(n:INTEGER) : ARRAY_OF interger
+  VAR
+    i :INTEGER
+  BEGIN
+    FOR i FROM 1 TO n STEP 1  DO
+        read("ecrire le vecteur ",t[i]);
+    END_FOR
+    RETURN t;
+  END
+
+
+FUNCTION produit ( v1,v2:ARRAY_OF interger, n :INTEGER) :INTEGER
+VAR
+    i :INTEGER;
+BEGIN
+ ps:=0;
+     FOR i FROM 0 TO n-1 STEP 1  DO
+       ps:=ps+(v1[i]*v2[i]);
+     END_FOR
+ 
+RETURN(ps);
+END
+
+
+ALGORITHM algorithm_name
+VAR
+   n,ps:INTEGER;
+v1,v2: ARRAY_OF INTEGER[n];
+ch:STRING;
+BEGIN
+
+  read(n);
+ v1:=remplir(n );    
+ v2:=remplir(n); 
+ ps:=produit(v1,v2,n);
+  IF (ps==0) THEN
+    ch:='orthogonaux';
+ ELSE
+    ch:=' ne pas orthogonaux';
+ END_IF
+ writh(" Le produit scalaire de deux vecteurs",ortho);
+
+END
